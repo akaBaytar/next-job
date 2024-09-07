@@ -21,7 +21,7 @@ const Sidebar = () => {
             asChild
             key={href}
             variant={pathname === href ? 'default' : 'link'}
-            className='hover:no-underline hover:bg-yellow-500 transition-colors'>
+            className='hover:no-underline'>
             <Link href={href} className='flex gap-2 items-center'>
               <span>{icon}</span> {label}
             </Link>
