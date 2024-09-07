@@ -14,7 +14,7 @@ const HomePage = () => {
           src={LOGO}
           alt='Next Job Logo'
           width={40}
-          className='mx-auto lg:ml-0'
+          className='mx-auto rounded-lg lg:ml-0'
         />
       </header>
       <section className='max-w-6xl mx-auto h-full py-24 gap-24 sm:px-8 grid lg:grid-cols-[1fr,400px] items-center justify-center lg:justify-start'>
@@ -23,11 +23,11 @@ const HomePage = () => {
           <h2 className='text-3xl md:text-4xl font-semibold'>
             Job <span className='text-primary'>Tracking</span> App
           </h2>
-          <p className='leading-loose max-w-md mt-4'>
+          <p className='leading-loose max-w-md mt-4 text-muted-foreground'>
             Next Job enables users to create and manage their own job
             application lists while tracking the progress of each application.
           </p>
-          <p className='leading-loose max-w-md mt-4'>
+          <p className='leading-loose max-w-md mt-4 text-muted-foreground'>
             As users add new jobs and time passes, the platform offers
             insightful data and visualizations, allowing users to review their
             past applications and monitor trends over time.
