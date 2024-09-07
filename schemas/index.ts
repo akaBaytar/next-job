@@ -20,4 +20,4 @@ export const createAndEditJobSchema = z.object({
   type: z.nativeEnum(JobType),
 });
 
-export type createAndEditJobType = z.infer<typeof createAndEditJobSchema>;
+export type CreateAndEditJobType = z.infer<typeof createAndEditJobSchema>;

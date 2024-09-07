@@ -20,12 +20,12 @@ import {
 
 type FieldProps = {
   name: string;
-  control: Control;
+  control: Control<any>;
 };
 
 type SelectProps = {
   name: string;
-  control: Control;
+  control: Control<any>;
   items: string[];
   text?: string;
 };
@@ -37,10 +37,11 @@ const JobFormField = ({ name, control }: FieldProps) => {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{name}</FormLabel>
+          <FormLabel className='capitalize'>{name}</FormLabel>
           <FormControl>
             <Input {...field} />
           </FormControl>
+          <FormMessage />
         </FormItem>
       )}
     />
