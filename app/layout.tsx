@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 
+import Providers from './providers';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -12,8 +14,10 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <ClerkProvider afterSignOutUrl='/'>
-      <html lang='en'>
-        <body>{children}</body>
+      <html lang='en' suppressHydrationWarning>
+        <body>
+          <Providers>{children}</Providers>
+        </body>
       </html>
     </ClerkProvider>
   );
