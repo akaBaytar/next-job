@@ -7,7 +7,9 @@ import ThemeProvider from '@/components/providers/theme';
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <Fragment>
-      <ThemeProvider attribute='class'>{children}</ThemeProvider>
+      <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+        {children}
+      </ThemeProvider>
     </Fragment>
   );
 };

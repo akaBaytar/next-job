@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <aside className='py-4 px-8 bg-muted h-full'>
-      <Image src={LOGO} alt='Next Job Logo' width={36} className='mx-auto' />
+      <Image src={LOGO} alt='Next Job Logo' width={36} className='mx-auto rounded-lg' />
       <div className='flex flex-col mt-16 gap-4'>
         {links.map(({ href, icon, label }) => (
           <Button
