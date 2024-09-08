@@ -14,7 +14,7 @@ model Job {
   updatedAt DateTime @updatedAt
   position  String
   company   String
-  locaion   String
+  location   String
   status    String
   type      String
 }
