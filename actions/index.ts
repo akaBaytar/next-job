@@ -53,7 +53,7 @@ export const getAllJobs = async ({
       };
     }
 
-    if (status && status !== 'all') where = { ...where, status };
+    if (status && status !== 'All') where = { ...where, status };
 
     const jobs: Job[] = await prisma.job.findMany({
       where,
