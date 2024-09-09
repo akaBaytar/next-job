@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { MagnifyingGlassIcon, ReloadIcon } from '@radix-ui/react-icons';
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 
 import { JobStatus } from '@/types';
 
@@ -63,15 +63,11 @@ const SearchForm = () => {
           ))}
         </SelectContent>
       </Select>
-      <Button type='submit' disabled={false}>
-        {false ? (
-          <ReloadIcon className='animate-spin' />
-        ) : (
-          <span className='flex items-center gap-1'>
-            <MagnifyingGlassIcon />
-            Search
-          </span>
-        )}
+      <Button type='submit'>
+        <span className='flex items-center gap-1'>
+          <MagnifyingGlassIcon />
+          Search
+        </span>
       </Button>
     </form>
   );

@@ -1,6 +1,6 @@
 import { Job } from "@/types";
 
-const JobCard = ({job}:Job) => {
+const JobCard = ({job}:{job:Job}) => {
   return ( <div>job card</div> );
 }
  
