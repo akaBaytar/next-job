@@ -24,3 +24,10 @@ export enum JobType {
   Freelance = 'Freelance',
   Contract = 'Contract',
 }
+
+export type GetAllJobsActionType = {
+  search?: string;
+  status?: string;
+  page?: number;
+  limit?: number;
+};
