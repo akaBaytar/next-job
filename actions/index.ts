@@ -22,7 +22,6 @@ export const createJob = async (values: CreateAndEditJobType) => {
 
     return job;
   } catch (error) {
-    console.error(error);
     return null;
   }
 };
