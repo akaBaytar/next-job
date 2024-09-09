@@ -28,7 +28,7 @@ const JobsList = () => {
 
   return (
     <Fragment>
-      <div className='grid md:grid-cols-2 xl:grid-cols-3 gap-8'>
+      <div className='grid md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8'>
         {jobs.map((job) => (
           <JobCard key={job.id} job={job} />
         ))}

@@ -1,3 +1,11 @@
+import { TrashIcon } from '@radix-ui/react-icons';
+
+import { Button } from '../ui/button';
+
 export const DeleteButton = () => {
-  return (<button>delete job</button>)
-}
+  return (
+    <Button size='icon' variant='outline'>
+      <TrashIcon />
+    </Button>
+  );
+};
