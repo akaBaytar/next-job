@@ -11,7 +11,9 @@ const Navbar = () => {
         Next Job
       </h1>
       <div className='flex items-center gap-4 lg:ml-auto'>
-        <UserButton />
+        <div className='grid place-items-center rounded-lg w-8 h-8'>
+          <UserButton />
+        </div>
         <ThemeToggle />
       </div>
     </nav>

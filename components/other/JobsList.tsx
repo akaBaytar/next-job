@@ -6,9 +6,10 @@ import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 
 import { getAllJobs } from '@/actions';
-
 import { Button } from '../ui/button';
+
 import JobCard from './JobCard';
+import { JobsSkeleton } from '../layout/skeleton';
 
 const JobsList = () => {
   const searchParams = useSearchParams();
@@ -24,7 +25,7 @@ const JobsList = () => {
 
   const jobs = data?.jobs || [];
 
-  if (isPending) return <p>Loading...</p>;
+  if (isPending) return <JobsSkeleton />;
 
   if (jobs.length < 1)
     return (
