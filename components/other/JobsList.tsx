@@ -1,11 +1,13 @@
 'use client';
 
 import { Fragment } from 'react';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 
 import { getAllJobs } from '@/actions';
 
+import { Button } from '../ui/button';
 import JobCard from './JobCard';
 
 const JobsList = () => {
@@ -24,7 +26,15 @@ const JobsList = () => {
 
   if (isPending) return <p>Loading...</p>;
 
-  if (jobs.length < 1) return <h2 className='text-xl'>No jobs found.</h2>;
+  if (jobs.length < 1)
+    return (
+      <div className='border p-4 rounded-lg flex justify-between items-center'>
+        <h2>No jobs found.</h2>
+        <Button asChild variant='outline'>
+          <Link href='/jobs'>Reset Filters</Link>
+        </Button>
+      </div>
+    );
 
   return (
     <Fragment>
