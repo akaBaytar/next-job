@@ -65,3 +65,20 @@ export const getAllJobs = async ({
     return { jobs: [], count: 0, page: 1, pages: 0 };
   }
 };
+
+export const deleteJob = async (id: string): Promise<Job | null> => {
+  const clerkId = authenticateAndRedirect();
+
+  try {
+    const job: Job = await prisma.job.delete({
+      where: {
+        id,
+        clerkId,
+      },
+    });
+
+    return job;
+  } catch (error) {
+    return null;
+  }
+};

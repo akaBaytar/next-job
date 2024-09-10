@@ -43,7 +43,7 @@ const JobCard = ({ job }: { job: Job }) => {
                 <Pencil2Icon />
               </Link>
             </Button>
-            <DeleteButton />
+            <DeleteButton id={id} />
           </div>
         </div>
       </CardHeader>
