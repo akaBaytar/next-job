@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 
 import { Prisma } from '@prisma/client';
+import dayjs from 'dayjs';
 
 import prisma from '@/database';
 import { authenticateAndRedirect } from '@/helpers';
@@ -114,11 +115,77 @@ export const updateJob = async (id: string, values: CreateAndEditJobType) => {
         id,
         clerkId,
       },
+
       data: { ...values },
     });
 
     return job;
   } catch (error) {
     return null;
+  }
+};
+
+export const getStats = async () => {
+  const clerkId = authenticateAndRedirect();
+
+  try {
+    const _stats = await prisma.job.groupBy({
+      where: { clerkId },
+
+      by: ['status'],
+
+      _count: { status: true },
+    });
+
+    const statsObj = _stats.reduce((acc, cur) => {
+      acc[cur.status] = cur._count.status;
+
+      return acc;
+    }, {} as Record<string, number>);
+
+    const stats = {
+      Pending: 0,
+      Declined: 0,
+      Accepted: 0,
+      Interview: 0,
+      ...statsObj,
+    };
+
+    return stats;
+  } catch (error) {
+    redirect('/jobs');
+  }
+};
+
+export const getChartData = async () => {
+  const clerkId = authenticateAndRedirect();
+
+  const sixMonths = dayjs().subtract(6, 'month').toDate();
+
+  try {
+    const jobs = await prisma.job.findMany({
+      where: {
+        clerkId,
+        createdAt: {
+          gte: sixMonths,
+        },
+      },
+
+      orderBy: {
+        createdAt: 'asc',
+      },
+    });
+
+    const applicationsPerMonth = jobs.reduce((acc, job) => {
+      const date = dayjs(job.createdAt).format('MMM YY');
+      const existing = acc.find((application) => application.date === date);
+
+      existing ? (existing.count += 1) : acc.push({ date, count: 1 });
+      return acc;
+    }, [] as Array<{ date: string; count: number }>);
+
+    return applicationsPerMonth;
+  } catch (error) {
+    redirect('/jobs');
   }
 };
