@@ -36,7 +36,7 @@ export const getAllJobs = async ({
   search,
   status,
   page = 1,
-  limit = 12,
+  limit = 6,
 }: GetAllJobsActionType): Promise<{
   jobs: Job[];
   count: number;

@@ -22,7 +22,7 @@ export const JobSkeleton = () => {
         <div className='flex justify-between items-center'>
           <div>
             <CardTitle>
-              <Skeleton className='w-48 h-4' />
+              <Skeleton className='w-36 h-4' />
             </CardTitle>
             <div>
               <Skeleton className='w-24 h-4 mt-1' />

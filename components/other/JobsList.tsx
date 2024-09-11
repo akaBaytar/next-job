@@ -12,12 +12,13 @@ import { Button } from '../ui/button';
 import { Skeleton } from '../ui/skeleton';
 import { JobsSkeleton } from '../layout/skeleton';
 import ButtonContainer from '../containers/Button';
+import { Separator } from '@radix-ui/react-dropdown-menu';
 
 const JobsList = () => {
- const searchParams = useSearchParams();
- const search = searchParams.get('search') ?? '';
- const status = searchParams.get('status') ?? 'All';
- const page = Number(searchParams.get('page')) || 1;
+  const searchParams = useSearchParams();
+  const search = searchParams.get('search') ?? '';
+  const status = searchParams.get('status') ?? 'All';
+  const page = Number(searchParams.get('page')) || 1;
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['jobs', search, status, page],
@@ -41,7 +42,7 @@ const JobsList = () => {
   if (isError) {
     return (
       <div className='border p-4 rounded-lg flex justify-between items-center'>
-        <h2>Failed to load jobs. Please try again later.</h2>
+        <h2>Failed to load jobs.</h2>
         <Button asChild variant='outline'>
           <Link href='/jobs'>Reset Filters</Link>
         </Button>
@@ -61,10 +62,11 @@ const JobsList = () => {
 
   return (
     <Fragment>
-      <div className='flex justify-between items-center border rounded-lg mb-16 p-4'>
+      <div className='flex flex-col sm:flex-row gap-4 justify-between items-center border rounded-lg mb-16 p-4'>
         <h2 className='text-xl font-semibold'>
-          {_count} {_count <= 1 ? 'Job' : 'Jobs'}
+          Total {_count} {_count <= 1 ? 'Job' : 'Jobs'}
         </h2>
+        <Separator className='border-b w-full max-w-[356px] sm:hidden' />
         {_pages > 1 && (
           <ButtonContainer currentPage={_page} totalPages={_pages} />
         )}
