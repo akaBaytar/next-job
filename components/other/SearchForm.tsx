@@ -47,7 +47,7 @@ const SearchForm = () => {
       className='border mb-16 p-8 gap-4 grid md:grid-cols-3 rounded-lg'>
       <Input
         type='text'
-        placeholder='Position or Company'
+        placeholder='Job Information'
         name='search'
         defaultValue={search}
       />
