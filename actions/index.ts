@@ -51,18 +51,32 @@ export const getAllJobs = async ({
     if (search) {
       where = {
         ...where,
-        OR: [{ position: { contains: search }, company: { contains: search } }],
+        OR: [
+          {
+            position: { contains: search },
+            company: { contains: search },
+            location: { contains: search },
+          },
+        ],
       };
     }
 
     if (status && status !== 'All') where = { ...where, status };
 
+    const skip = (page - 1) * limit;
+
     const jobs: Job[] = await prisma.job.findMany({
       where,
+      take: limit,
+      skip,
       orderBy: { createdAt: 'desc' },
     });
 
-    return { jobs, count: 0, page, pages: Math.floor(jobs.length / limit + 1) };
+    const count: number = await prisma.job.count({ where });
+
+    const pages = Math.ceil(count / limit);
+
+    return { jobs, count, page, pages };
   } catch (error) {
     return { jobs: [], count: 0, page: 1, pages: 0 };
   }
