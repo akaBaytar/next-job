@@ -1,12 +1,6 @@
 import { Skeleton } from '../ui/skeleton';
 import { Separator } from '../ui/separator';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '../ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 export const StatsSkeleton = () => {
   return (
@@ -30,9 +24,9 @@ export const JobSkeleton = () => {
             <CardTitle>
               <Skeleton className='w-48 h-4' />
             </CardTitle>
-            <CardDescription>
+            <div>
               <Skeleton className='w-24 h-4 mt-1' />
-            </CardDescription>
+            </div>
           </div>
           <div className='flex gap-2 items-center'>
             <Skeleton className='h-9 w-9' />
