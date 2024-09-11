@@ -5,7 +5,7 @@ import DropdownMenu from './dropdown';
 
 const Navbar = () => {
   return (
-    <nav className='bg-muted p-4 sm:px-8 lg:px-16 flex items-center gap-4 justify-between'>
+    <nav className='flex items-center justify-between gap-4 p-4 sm:px-8 lg:px-16 border-b '>
       <DropdownMenu />
       <h1 className='text-primary font-semibold tracking-wider text-2xl'>
         Next Job
