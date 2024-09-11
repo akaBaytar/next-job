@@ -13,12 +13,12 @@
 
 ## Live Demo
 
-- You can access the live demo via [Vercel](){:target="\_blank"}.
+- You can access the live demo via [Vercel](https://burakbilgili-nextjob.vercel.app).
 
 ## Screens
 
-[<img src="./public/screen1.png" />](){:target="\_blank"}
-[<img src="./public/screen2.png" />](){:target="\_blank"}
+[<img src="./public/screen1.png" />](https://burakbilgili-nextjob.vercel.app)
+[<img src="./public/screen2.png" />](https://burakbilgili-nextjob.vercel.app)
 
 ## Features
 
