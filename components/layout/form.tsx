@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import type { Control } from 'react-hook-form';
 
 import { Input } from '../ui/input';
