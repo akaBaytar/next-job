@@ -14,13 +14,12 @@ import { JobsSkeleton } from '../layout/skeleton';
 import ButtonContainer from '../containers/Button';
 
 const JobsList = () => {
-  const searchParams = useSearchParams();
+ const searchParams = useSearchParams();
+ const search = searchParams.get('search') ?? '';
+ const status = searchParams.get('status') ?? 'All';
+ const page = Number(searchParams.get('page')) || 1;
 
-  const search = searchParams.get('search') || '';
-  const status = searchParams.get('status') || 'All';
-  const page = Number(searchParams.get('page')) || 1;
-
-  const { data, isPending } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['jobs', search, status, page],
     queryFn: () => getAllJobs({ search, status, page }),
   });
@@ -31,13 +30,24 @@ const JobsList = () => {
   const _page = data?.page || 0;
   const _pages = data?.pages || 0;
 
-  if (isPending)
+  if (isLoading)
     return (
       <>
         <Skeleton className='my-16 h-[62px] border rounded-lg' />
         <JobsSkeleton />
       </>
     );
+
+  if (isError) {
+    return (
+      <div className='border p-4 rounded-lg flex justify-between items-center'>
+        <h2>Failed to load jobs. Please try again later.</h2>
+        <Button asChild variant='outline'>
+          <Link href='/jobs'>Reset Filters</Link>
+        </Button>
+      </div>
+    );
+  }
 
   if (jobs.length < 1)
     return (
@@ -55,7 +65,7 @@ const JobsList = () => {
         <h2 className='text-xl font-semibold'>
           {_count} {_count <= 1 ? 'Job' : 'Jobs'}
         </h2>
-        {_pages < 2 ? null : (
+        {_pages > 1 && (
           <ButtonContainer currentPage={_page} totalPages={_pages} />
         )}
       </div>

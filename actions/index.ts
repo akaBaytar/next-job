@@ -53,9 +53,16 @@ export const getAllJobs = async ({
         ...where,
         OR: [
           {
-            position: { contains: search },
-            company: { contains: search },
-            location: { contains: search },
+            position: { contains: search, mode: 'insensitive' },
+          },
+          {
+            company: { contains: search, mode: 'insensitive' },
+          },
+          {
+            location: { contains: search, mode: 'insensitive' },
+          },
+          {
+            type: { contains: search, mode: 'insensitive' },
           },
         ],
       };
